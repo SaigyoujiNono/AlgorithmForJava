@@ -14,34 +14,90 @@ public class BinaryTree <T extends Comparable<T>> {
 
     public static void main(String[] args) {
         BinaryTree<Integer> bt = new BinaryTree<>();
-        bt.add(10);
-        bt.add(7);
+        bt.add(30);
         bt.add(15);
-        bt.add(4);
-        bt.add(9);
-        Integer in1 = 13;
-        bt.add(in1);
+        bt.add(50);
+        bt.add(40);
+        bt.add(22);
         bt.add(19);
-        bt.add(2);
-        bt.add(5);
-        bt.add(8);
-        bt.add(11);
-        Integer in2 = 18;
-        bt.add(in2);
-        bt.add(20);
-        bt.add(17);
         bt.preEach();
-        System.out.println("最大宽度为: "+bt.getTreeMaxWidth());
-        System.out.println("最大宽度为: "+bt.getTreeMaxWidth2());
-        System.out.println("二叉搜索树: "+bt.isBst());
-        System.out.println("完全二叉树: "+bt.isCBT());
-        System.out.println("二叉树高度: "+bt.getTreeDepth());
-        System.out.println("二叉树节点: "+bt.get(5).value);
-        Node<Integer> n1 = new Node<>(17);
-        Node<Integer> n2 = new Node<>(15);
+        System.out.println("---------------");
+        bt.remove(15);
+        bt.preEach();
+//        System.out.println("最大宽度为: "+bt.getTreeMaxWidth());
+//        System.out.println("最大宽度为: "+bt.getTreeMaxWidth2());
+//        System.out.println("二叉搜索树: "+bt.isBst());
+//        System.out.println("完全二叉树: "+bt.isCBT());
+//        System.out.println("二叉树高度: "+bt.getTreeDepth());
+//        System.out.println("二叉树节点: "+bt.get(5).value);
+//        Node<Integer> n1 = new Node<>(17);
+//        Node<Integer> n2 = new Node<>(15);
+//
+//        System.out.println("求二叉树两个节点的公共父节点: "+bt.getLowestCommonAncestor(n1,n2).value);
+//        System.out.println("求二叉树两个节点的公共父节点2: "+bt.getLowestCommonAncestor2(n1,n2).value);
+    }
 
-        System.out.println("求二叉树两个节点的公共父节点: "+bt.getLowestCommonAncestor(n1,n2).value);
-        System.out.println("求二叉树两个节点的公共父节点2: "+bt.getLowestCommonAncestor2(n1,n2).value);
+    /**
+     * 删除单个节点
+     * @param val   传入T值
+     */
+    public void remove(T val){
+        if (root==null){
+            return;
+        }
+        Node<T> cur = root;
+        Node<T> parent = null;
+        while (true) {
+            if (cur.value.compareTo(val)==0){
+                //如果parent为空代表这是根节点
+                //如果这是叶子节点则直接删除
+                if (cur.left == null && cur.right == null){
+                    if (parent == null){
+                        root = null;
+                    }else if (parent.left==cur) {
+                        parent.left = null;
+                    }else {
+                        parent.right = null;
+                    }
+                    return;
+                }
+                //如果是度为1的节点则直接指向其子节点
+                //1、左子节点为空，右子节点不为空
+                else if (cur.left == null){
+                    if (parent == null){
+                        root = cur.right;
+                    }else if (parent.left==cur) {
+                        parent.left = cur.right;
+                    }else {
+                        parent.right = cur.right;
+                    }
+                    return;
+                }else if (cur.right == null){
+                    if (parent == null){
+                        root = cur.left;
+                    }else if (parent.left==cur) {
+                        parent.left = cur.left;
+                    }else {
+                        parent.right = cur.left;
+                    }
+                    return;
+                }
+                //当要删除的节点度为2时
+            }else if (cur.value.compareTo(val)>0){
+                parent = cur;
+                if (cur.left==null){
+                    return;
+                }
+                cur = cur.left;
+            }else {
+                parent = cur;
+                if (cur.right==null){
+                    return;
+                }
+                cur = cur.right;
+            }
+        }
+
     }
 
 
