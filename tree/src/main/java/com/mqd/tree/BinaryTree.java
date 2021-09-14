@@ -11,35 +11,6 @@ public class BinaryTree <T extends Comparable<T>> {
     //根节点
     private Node<T> root = null;
 
-
-    public static void main(String[] args) {
-        BinaryTree<Integer> bt = new BinaryTree<>();
-        bt.add(30);
-        bt.add(15);
-        bt.add(50);
-        bt.add(40);
-        bt.add(22);
-        bt.add(12);
-        bt.add(19);
-        bt.add(14);
-        bt.add(13);
-        bt.preEach();
-        System.out.println("---------------");
-        bt.remove(15);
-        bt.preEach();
-//        System.out.println("最大宽度为: "+bt.getTreeMaxWidth());
-//        System.out.println("最大宽度为: "+bt.getTreeMaxWidth2());
-//        System.out.println("二叉搜索树: "+bt.isBst());
-//        System.out.println("完全二叉树: "+bt.isCBT());
-//        System.out.println("二叉树高度: "+bt.getTreeDepth());
-//        System.out.println("二叉树节点: "+bt.get(5).value);
-//        Node<Integer> n1 = new Node<>(17);
-//        Node<Integer> n2 = new Node<>(15);
-//
-//        System.out.println("求二叉树两个节点的公共父节点: "+bt.getLowestCommonAncestor(n1,n2).value);
-//        System.out.println("求二叉树两个节点的公共父节点2: "+bt.getLowestCommonAncestor2(n1,n2).value);
-    }
-
     /**
      * 删除单个节点
      * 当删除度为2的节点时从左子树寻找最大的节点

@@ -10,15 +10,6 @@ public class SingleLinkedList<T extends Comparable<T>>{
     //头节点
     private Node<T> head = null;
 
-    public static void main(String[] args) {
-        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(8);
-        list.showAll();
-    }
-
     /**
      * 添加一个节点
      * @param value 值
