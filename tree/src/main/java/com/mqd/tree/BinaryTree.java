@@ -19,7 +19,10 @@ public class BinaryTree <T extends Comparable<T>> {
         bt.add(50);
         bt.add(40);
         bt.add(22);
+        bt.add(12);
         bt.add(19);
+        bt.add(14);
+        bt.add(13);
         bt.preEach();
         System.out.println("---------------");
         bt.remove(15);
@@ -59,7 +62,6 @@ public class BinaryTree <T extends Comparable<T>> {
                     }else {
                         parent.right = null;
                     }
-                    return;
                 }
                 //如果是度为1的节点则直接指向其子节点
                 //1、左子节点为空，右子节点不为空
@@ -71,7 +73,6 @@ public class BinaryTree <T extends Comparable<T>> {
                     }else {
                         parent.right = cur.right;
                     }
-                    return;
                 }else if (cur.right == null){
                     if (parent == null){
                         root = cur.left;
@@ -80,9 +81,32 @@ public class BinaryTree <T extends Comparable<T>> {
                     }else {
                         parent.right = cur.left;
                     }
-                    return;
                 }
                 //当要删除的节点度为2时
+                else{
+                    //寻找左子树中最右的节点，该节点的度一定是0或者1
+                    Node<T> delNode = cur.left;
+                    while (delNode.right != null) {
+                        delNode = delNode.right;
+                    }
+                    //将这个节点删除
+                    remove(delNode.value);
+                    //调整节点指向
+                    if (parent == null){
+                        delNode.left = root.left;
+                        delNode.right = root.right;
+                        root = delNode;
+                    }else if (parent.left==cur) {
+                        delNode.left = cur.left;
+                        delNode.right = cur.right;
+                        parent.left = delNode;
+                    }else {
+                        delNode.left = cur.left;
+                        delNode.right = cur.right;
+                        parent.right = delNode;
+                    }
+                }
+                return;
             }else if (cur.value.compareTo(val)>0){
                 parent = cur;
                 if (cur.left==null){
