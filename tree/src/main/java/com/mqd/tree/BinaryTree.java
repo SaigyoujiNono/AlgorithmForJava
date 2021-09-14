@@ -42,6 +42,7 @@ public class BinaryTree <T extends Comparable<T>> {
 
     /**
      * 删除单个节点
+     * 当删除度为2的节点时从左子树寻找最大的节点
      * @param val   传入T值
      */
     public void remove(T val){
