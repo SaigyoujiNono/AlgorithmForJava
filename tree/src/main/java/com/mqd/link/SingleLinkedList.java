@@ -123,6 +123,7 @@ public class SingleLinkedList<T extends Comparable<T>> {
             preCurMax.next = cur;
             return;
         }
+        assert preCurMin != null;
         if (preCurMin.next == preCurMax){
             preCurMin.next = preCurMax.next;
             preCurMax.next = preCurMin.next.next;
