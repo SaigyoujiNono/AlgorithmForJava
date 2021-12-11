@@ -160,6 +160,151 @@ public class BinaryTree <T extends Comparable<T>> {
     }
 
     /**
+     * morris遍历
+     */
+    public void morris(){
+        if (root == null) {
+            return;
+        }
+        Node<T> cur = root;
+        Node<T> mostRight = null;//cur左子树的最右节点
+        while (cur != null){
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur){
+                    mostRight = mostRight.right;
+                }//将mostRight变成cur左子树上最右的节点
+                if (mostRight.right == null){
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                }else{  // mostRight.right == cur
+                    mostRight.right = null;
+                }
+            }
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris前序遍历
+     */
+    public void morrisPre(){
+        if (root == null) {
+            return;
+        }
+        Node<T> cur = root;
+        Node<T> mostRight = null;//cur左子树的最右节点
+        while (cur != null){
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur){
+                    mostRight = mostRight.right;
+                }//将mostRight变成cur左子树上最右的节点
+                if (mostRight.right == null){
+                    System.out.println(cur.value);
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                }else{  // mostRight.right == cur
+                    mostRight.right = null;
+                }
+            }else {
+                System.out.println(cur.value);
+            }
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris中序遍历
+     */
+    public void morrisMid(){
+        if (root == null) {
+            return;
+        }
+        Node<T> cur = root;
+        Node<T> mostRight = null;//cur左子树的最右节点
+        while (cur != null){
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur){
+                    mostRight = mostRight.right;
+                }//将mostRight变成cur左子树上最右的节点
+                if (mostRight.right == null){
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                }else{  // mostRight.right == cur
+                    mostRight.right = null;
+                }
+            }
+            System.out.println(cur.value);
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris后序遍历
+     */
+    public void morrisPost(){
+        if (root == null) {
+            return;
+        }
+        Node<T> cur = root;
+        Node<T> mostRight = null;//cur左子树的最右节点
+        while (cur != null){
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur){
+                    mostRight = mostRight.right;
+                }//将mostRight变成cur左子树上最右的节点
+                if (mostRight.right == null){
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                }else{  // mostRight.right == cur
+                    mostRight.right = null;
+                    printEdge(cur.left);
+                }
+            }
+            cur = cur.right;
+        }
+        printEdge(root);
+    }
+
+    /**
+     * 打印该节点右边界
+     * @param x 节点
+     */
+    public void printEdge(Node<T> x){
+        Node<T> tail = reverseEdge(x);
+        Node<T> cur = tail;
+        while (cur != null){
+            System.out.println(cur.value);
+            cur = cur.right;
+        }
+        reverseEdge(tail);
+    }
+
+    /**
+     * 逆序某个节点的右边界
+     * @param x    节点
+     * @return  返回逆序后的头节点
+     */
+    public Node<T> reverseEdge(Node<T> x){
+        Node<T> pre = null;
+        Node<T> next = null;
+        while (x != null){
+            next = x.right;
+            x.right = pre;
+            pre = x;
+            x = next;
+        }
+        return pre;
+    }
+
+    /**
      * 给定两个节点，求出它们的最低公共祖先节点 2.0版本
      * @param n1    节点1
      * @param n2    节点2
