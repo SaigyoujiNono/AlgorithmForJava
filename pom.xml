@@ -12,6 +12,7 @@
         <module>tree</module>
         <module>utils</module>
         <module>greed</module>
+        <module>question</module>
     </modules>
 
     <dependencies>
