@@ -9,7 +9,7 @@ public class BuyApple {
 
 
     public static void main(String[] args) {
-        int n = 1111;
+        int n = 1121890248;
         long t1 = System.currentTimeMillis();
         System.out.println(solution(n));
         long t2 = System.currentTimeMillis();
@@ -66,7 +66,7 @@ public class BuyApple {
     public static int solution4(int n) {
         if (n % 2 != 0) return -1;
         int apple = n;
-        while (apple % 8 != 0 && apple > 0) {
+        while (apple % 8 != 0 && apple > 5) {
             apple -= 6;
         }
         return apple < 0 ? -1 : apple / 8 + (n - apple) / 6;
