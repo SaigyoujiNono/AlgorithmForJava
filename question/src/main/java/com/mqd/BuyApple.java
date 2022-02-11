@@ -8,14 +8,17 @@ public class BuyApple {
 
 
     public static void main(String[] args) {
-        int n = 301;
+        int n = 224;
         long t1 = System.currentTimeMillis();
         System.out.println(solution(n));
         long t2 = System.currentTimeMillis();
         System.out.println(solution2(n));
         long t3 = System.currentTimeMillis();
+        System.out.println(solution3(n));
+        long t4 = System.currentTimeMillis();
         System.out.println("方法1: " + (t2 - t1) + "ms");
         System.out.println("方法2: " + (t3 - t2) + "ms");
+        System.out.println("方法3: " + (t4 - t3) + "ms");
     }
 
     public static int solution(int n) {
@@ -26,17 +29,7 @@ public class BuyApple {
         if (n < 0) {
             return -1;
         }
-        int solution1 = solution(n - 6);
-        int solution2 = solution(n - 8);
-        if (solution1 < 0 && solution2 < 0) {
-            return -1;
-        } else if (solution1 < 0) {
-            return solution2 + 1;
-        } else if (solution2 < 0) {
-            return solution1 + 1;
-        } else {
-            return Math.min(solution1, solution2) + 1;
-        }
+        return min(solution(n - 6),solution(n - 8));
     }
 
     public static int solution2(int n) {
@@ -53,5 +46,28 @@ public class BuyApple {
             eight--;
         }
         return -1;
+    }
+
+    public static int solution3(int n){
+        if (n%2!=0) return -1;
+        if (n % 8 == 0){
+            return n/8;
+        }
+        if (n < 0){
+            return -1;
+        }
+        return min(solution3(n - 6),solution3(n - 8));
+    }
+
+    private static int min(int x1, int x2){
+        if (x1 < 0 && x2 < 0) {
+            return -1;
+        } else if (x1 < 0) {
+            return x2 + 1;
+        } else if (x2 < 0) {
+            return x1 + 1;
+        } else {
+            return Math.min(x1, x2) + 1;
+        }
     }
 }
