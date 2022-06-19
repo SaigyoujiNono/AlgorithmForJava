@@ -5,16 +5,22 @@ package com.mqd;
  */
 public class MaxSubArraySum {
     public static void main(String[] args) {
-        int[] arr = new int[]{-2,1,-3,4,-1};
-        System.out.println(solution(arr,0,0));
+        int[] arr = new int[]{1,1,-1,-10,11,4,-6,9,20,-10,-2};
+        System.out.println(solution(arr));
     }
 
-    public static int solution(int[] arr, int start, int res){
-        if(start == arr.length){
-            return res;
+    public static int solution(int[] arr){
+        int[] dp = new int[arr.length];
+        dp[0] = arr[0];
+        int res = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (dp[i - 1] <= 0) {
+                dp[i] = arr[i];
+            } else {
+                dp[i] = arr[i] + dp[i - 1];
+            }
+            res = Math.max(res, dp[i]);
         }
-        return Math.max(solution(arr, start + 1,res),
-                solution(arr, start + 1,res+arr[start])
-        );
+        return res;
     }
 }
