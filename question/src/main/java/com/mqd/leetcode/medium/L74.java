@@ -1,4 +1,4 @@
-package com.mqd.leetcode;
+package com.mqd.leetcode.medium;
 
 /**
  * leetcode 74
@@ -6,10 +6,6 @@ package com.mqd.leetcode;
  *
  * 每行中的整数从左到右按升序排列。
  * 每行的第一个整数大于前一行的最后一个整数。
- *
- * 来源：力扣（LeetCode）
- * @link https://leetcode.cn/problems/search-a-2d-matrix
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class L74 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.mqd.leetcode;
+package com.mqd.leetcode.medium;
 
 import com.mqd.struct.TreeNode;
 
@@ -10,10 +10,6 @@ import com.mqd.struct.TreeNode;
  *
  * 首先找到需要删除的节点；
  * 如果找到了，删除它。
- *
- * 来源：力扣（LeetCode）
- * @link https://leetcode.cn/problems/delete-node-in-a-bst
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class L450 {
     public static void main(String[] args) {

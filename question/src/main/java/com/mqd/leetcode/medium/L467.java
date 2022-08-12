@@ -1,18 +1,14 @@
-package com.mqd.leetcode;
+package com.mqd.leetcode.medium;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * leetcode 467 环绕字符串中唯一的子字符串
- * 把字符串 s 看作是 “abcdefghijklmnopqrstuvwxyz” 的无限环绕字符串，所以 s 看起来是这样的：
+ * 把字符串 s 看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s 看起来是这样的：
  *
- * "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd...." . 
- * 现在给定另一个字符串 p 。返回 s 中 唯一 的 p 的 非空子串 的数量 。 
- *
- * 来源：力扣（LeetCode）
- * @link https://leetcode.cn/problems/unique-substrings-in-wraparound-string
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....".
+ * 现在给定另一个字符串 p 。返回s 中唯一 的 p 的 非空子串的数量。
  */
 public class L467 {
     public int findSubstringInWraproundString(String p) {
