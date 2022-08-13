@@ -1,4 +1,4 @@
-package com.mqd.leetcode;
+package com.mqd.leetcode.medium;
 
 import com.mqd.utils.TimeStatistic;
 
